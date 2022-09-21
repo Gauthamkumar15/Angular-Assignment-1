@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel = "stylesheet" href = "index.css" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adding Members</title>
+    <script src = "https://code.angularjs.org/snapshot/angular.min.js" ></script>
+</head>
+<body>
+    <div class="bg-container" ng-app = "assignment1" ng-controller = "maincontroller">
+        <h1>Angular Assignment 1</h1>
+        <div class="add">
+            <div class = "add-item">
+                <label >Name:</label>
+            <input ng-model = "name" type="text" />
+            </div>
+            <div class = "add-item">
+                <label >Age:</label>
+                <input ng-model = "age" type="text" />
+            </div>
+            <div class = "add-item">
+                <label >Gender:</label>
+            <select ng-model = "gender"> 
+                <option value="" disabled hidden>Select an option</option>
+                <option value = "Male">Male</option>
+                <option value = "Female">Female</option>
+                <option value = "Others">Others</option>
+            </select>
+            </div>
+            <div class = "add-button">
+                <button ng-click = "add(name,age,gender)">Add</button>
+            </div>
+        </div>
+        <h1>Members</h1>
+        <div>
+            
+            <ol>
+                <li ng-repeat = "eachItem in humanArray">
+                    <div class="list-div">
+                        <div class = "update" ng-show = "eachItem.isUpdateShow">
+                            <div class = "add-item">
+                                <label >Name:</label>
+                            <input ng-model = "eachItem.name" type="text" />
+                            </div>
+                            <div class = "add-item">
+                                <label >Age:</label>
+                                <input ng-model = "eachItem.age" type="text" />
+                            </div>
+                            <div class = "add-item">
+                                <label >Gender:</label>
+                                <select ng-model = "eachItem.gender"> 
+                                    <option value = "Male">Male</option>
+                                    <option value = "Female">Female</option>
+                                    <option value = "Others">Others</option>
+                                </select>
+                            </div>
+                            <div class = "add-button">
+                                <button ng-click = "update(eachItem.id,eachItem.name,eachItem.age,eachItem.gender)" >Update</button>
+                            </div> 
+                        </div>
+                        <p>{{"Name: " + eachItem.name + " &nbsp&nbsp&nbsp&nbsp&nbspAge: " + eachItem.age + " &nbsp&nbsp&nbsp&nbsp&nbspGender: " + eachItem.gender}}</p>
+                        <div>
+                            <button ng-click ="edit(eachItem.id)"  type = "button" >Edit</button>
+                        <button ng-click = "delete(eachItem.id)" type = "button" >Delete</button>
+                        </div>
+                        
+                    </div> 
+                </li>
+            </ol>
+        </div>
+        
+        
+        </div>
+        <script src = "app.js"></script>
+    <script src = "main.controller.js"></script>
+</body>
+</html>
